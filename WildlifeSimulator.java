@@ -7,14 +7,14 @@ public class WildlifeSimulator {
     private int speciesCount;
     
     public WildlifeSimulator(int maxSpecies) {
-        //TODO
+        species = new Species[maxSpecies];
     }
     
     /**
      * Add a species to the simulator
      */
     public void addSpecies(Species s) {
-        //TODO
+        species[speciesCount++] = s;
     }
     
     /**
@@ -44,6 +44,15 @@ public class WildlifeSimulator {
      */
     public String getSpeciesInfo(int index) {
         return species[index].toString();
+    }
+
+    public String toString(){
+        String s = "";
+        for (Species sp: species){
+            if ( sp != null)
+                s = sp.toString() + "/n";
+        }
+        return s;
     }
     
     /**
