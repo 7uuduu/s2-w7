@@ -26,6 +26,10 @@ public class Species {
     public String getName() {
         return name;
     }
+
+    public double getPopulationDensity(){
+        return population/habitatCapacity;
+    }
     
     public long getPopulation() {
         return population;
@@ -57,7 +61,10 @@ public class Species {
      * Population change = (births - deaths) but capped at habitat capacity
      */
     public void simulateYear() {
-        //TODO
+        population *=1+(birthRate - deathRate);
+        if (population > habitatCapacity){
+            population = habitatCapacity;
+        }
     }
     
     /**

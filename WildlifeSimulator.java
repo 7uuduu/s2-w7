@@ -21,22 +21,24 @@ public class WildlifeSimulator {
      * Simulate one year of population changes for all species
      */
     public void simulateYear() {
-        //TODO
+        for (int i = 0; i < speciesCount;i++)
+            species[i].simulateYear();
     }
     
     /**
      * Simulate multiple years
      */
     public void simulate(int years) {
-        //TODO
+        for (int i = 0; i < years; i++){
+            simulateYear();
+        }
     }
     
     /**
      * Get species at given index
      */
     public Species getSpecies(int index) {
-        //TODO
-        return null;
+        return species[index];
     }
     
     /**
@@ -59,24 +61,41 @@ public class WildlifeSimulator {
      * Get total wildlife count across all species
      */
     public double getTotalPopulation() {
-        //TODO
-        return 0.0;
+        double p = 0;
+
+        for (int i = 0; i < speciesCount; i++){
+            p += species[i].getPopulation();
+        }
+
+        return p;
     }
     
     /**
      * Find the species with largest population
      */
     public int getMostPopulousIndex() {
-        //TODO
-        return -1;
+        int mp = 0;
+
+        for (int i = 1; i < speciesCount;i++){
+            if (species[mp].getPopulationDensity() < species[i].getPopulationDensity()){
+                mp = i;
+            }
+        }
+        return mp;
     }
     
     /**
      * Find the species with smallest population (most endangered)
      */
     public int getMostEndangeredIndex() {
-        //TODO
-        return -1;
+        int lp = 0;
+
+        for (int i = 1; i < speciesCount;i++){
+            if (species[lp].getPopulationDensity() > species[i].getPopulationDensity()){
+                lp = i;
+            }
+        }
+        return lp;
     }
     
     public int getSpeciesCount() {

@@ -43,14 +43,20 @@ public class WildlifeSimulatorRunner {
         System.out.println("INITIAL POPULATIONS:");
         System.out.println("------------------");
         for (int i = 0; i < simulator.getSpeciesCount();i++){
-            System.out.println(simulator);
+            System.out.println(simulator.getSpeciesInfo(i));
         }
         
         // Run simulation for 10 years and record data year-by-year
         int simulationYears = 10;
+        simulator.simulate(10);
+
         
         
-        // Display final populations
+        System.out.println("\n\nFINAL POPULATIONS:");
+        System.out.println("------------------");
+        for (int i = 0; i < simulator.getSpeciesCount();i++){
+            System.out.println(simulator.getSpeciesInfo(i));
+        }
         
         
         // Display statistics
@@ -60,7 +66,7 @@ public class WildlifeSimulatorRunner {
         int mostEndangered = simulator.getMostEndangeredIndex();
         
         
-                
+        
         System.out.println("\nSimulation complete!");
     }
     
